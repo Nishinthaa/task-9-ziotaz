@@ -1,5 +1,3 @@
-
-
 /* General Styles */
 body {
   font-family: Arial, sans-serif;
@@ -8,52 +6,170 @@ body {
   background-color: white;
   color: #333;
   transition: background-color 0.3s, color 0.3s;
+  box-sizing: border-box;
 }
 
-.dark-mode {
-  background-color: #333;
-  color: white;
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-/* Navbar */
+
+/*Navbar.css */
 .navbar {
   display: flex;
   justify-content: space-between;
-  padding: 15px;
-  background-color: grey;
+  align-items: center;
+  background-color: #343a40;
   color: white;
-}
-
-.navbar button {
-  background-color: #f0f0f0; 
-  border: none;
   padding: 10px 20px;
-  cursor: pointer;
-  transition: background-color 0.3s ease; 
 }
 
-.navbar button:hover {
-  background-color: dodgerblue; 
-  color: white; 
+.navbar-links {
+  display: flex;
+  gap: 15px;
 }
+
+.nav-links button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.nav-links button:hover {
+  color: #17a2b8;
+}
+
+.navbar-toggle {
+  display: none;
+  cursor: pointer;
+}
+
 
 .search-bar input {
-  padding: 10px;
-  border: 1px solid #ddd;
+  padding: 5px 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
   border-radius: 4px;
 }
 
-.dark-mode-toggle {
-  background-color: #444;
-  color: white;
+.search-bar {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px;
 }
+
+.navbar-links.open {
+  display: block;
+  position: absolute;
+  top: 50px;
+  background-color: #343a40;
+  width: 100%;
+  left: 0;
+}
+
+/* Hero Section */
+.hero-section {
+  background-image: url('./components/assets/hero-background.jpg');
+  background-size: cover;
+  background-position: center;
+  color: black;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero-section p {
+  font-size: 1.5rem;
+  margin-bottom: 40px;
+}
+
+.shop-now-btn {
+  background-color: #007bff;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.shop-now-btn:hover {
+  background-color: #0056b3;
+}
+
+
+/*Footer.css */
+.footer {
+  background-color: #343a40;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: auto; /* Ensure footer sticks to the bottom */
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 
 /* Product List */
 .product-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
+  padding: 20px;
 }
+
+.product-item {
+  background: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s;
+  text-align: center;
+}
+
+.product-item:hover {
+  transform: scale(1.05);
+}
+
+.product-item img {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #ddd;
+}
+
+.product-item h3 {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+.product-item p {
+  margin: 10px 0;
+}
+
+.product-item button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.product-item button:hover {
+  background-color: #0056b3;
+}
+
 
 .card {
   border: 1px solid #ddd;
@@ -139,37 +255,89 @@ body {
   border-radius: 8px;
 }
 
-.contact{
-  background-color: paleturquoise;
+/* Contact Section Styling */
+.contact {
+  background-color: paleturquoise; 
+  padding: 20px 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 600px;
+  margin: 50px auto;
 }
 
-.contact form {
+.contact h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.contact-form {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-width: 400px;
-  margin: 0 auto;
 }
 
-.contact form input,
-.contact form textarea {
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 6.5px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease-in-out;
 }
 
-.contact form button {
-  padding: 10px;
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: black; /* Highlight border on focus */
+}
+
+.contact-form textarea {
+  height: 120px;
+  resize: none; /* Prevent resizing */
+}
+
+.contact-form button {
+  padding: 15px;
   background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
 }
+
+.contact-form button:hover {
+  background-color: grey;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .contact {
+    padding: 30px 15px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 0.9rem;
+  }
+
+  .contact h2 {
+    font-size: 1.5rem;
+  }
+}
+
+
+
+
 
 /* Cart Page */
 
 .cart-page{
-  background-color: paleturquoise;
+  background-color: white;
   color: black; 
   min-height: 100vh;
   padding: 20px;
@@ -215,6 +383,8 @@ body {
 
 .product-list{
   background-color: paleturquoise;
+  gap: 20px;
+  padding: 20px;
 }
 
 .product-card img {
@@ -244,11 +414,6 @@ body {
 
 .product-card button:hover {
   background-color: black;
-}
-
-/* App.css */
-.product-list {
-  padding: 20px;
 }
 
 .products {
@@ -297,17 +462,155 @@ body {
   background-color: black;
 }
 
+.product-item {
+  background: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s;
+  position: relative;
+}
 
+.product-item:hover {
+  transform: scale(1.05);
+}
 
+.product-item {
+  animation: fadeIn 0.8s ease-in-out;
+}
 
+/* Base Styles */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns by default (desktop) */
+  gap: 20px;
+  padding: 20px;
+}
 
-/* Responsive */
-@media (max-width: 600px) {
-  .navbar {
-    flex-direction: column;
+.product-card {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.product-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .products-grid {
+    grid-template-columns: repeat(1, 1fr); /* 1 column on mobile */
+    padding: 10px;
   }
 
-  .product-container {
-    grid-template-columns: 1fr;
+  .product-card {
+    padding: 10px;
   }
 }
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+    gap: 15px;
+    padding: 15px;
+  }
+
+  .product-card {
+    padding: 12px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1025px) {
+  .products-grid {
+    grid-template-columns: repeat(4, 1fr); /* 4 columns on desktop */
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .product-card {
+    padding: 15px;
+  }
+}
+
+
+@media (min-width: 1024px) {
+  .navbar {
+    padding: 20px 40px;
+  }
+
+  .hero-section h1 {
+    font-size: 4rem;
+  }
+
+  .hero-section p {
+    font-size: 2rem;
+  }
+
+  .product-list {
+    grid-template-columns: repeat(4, 1fr); /* 4 items per row */
+  }
+}
+
+/* Medium screens (Tablets, Width between 768px and 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .navbar {
+    padding: 15px 30px;
+  }
+
+  .hero-section h1 {
+    font-size: 3rem;
+  }
+
+  .hero-section p {
+    font-size: 1.5rem;
+  }
+
+  .product-list {
+    grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+  }
+}
+
+
+/* Small screens (Mobile phones, Width < 768px) */
+@media (max-width: 767px) {
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background-color: #343a40;
+    position: absolute;
+    top: 60px;
+    width: 100%;
+    left: 0;
+    z-index: 10;
+  }
+
+  .navbar-links.open {
+    display: flex;
+  }
+
+  .navbar-toggle {
+    display: block;
+  }
+
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+
+  .hero-section p {
+    font-size: 1rem;
+  }
+
+  .product-list {
+    grid-template-columns: repeat(1, 1fr); /* 1 item per row */
+  }
+}
+
+
