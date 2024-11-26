@@ -1,9 +1,10 @@
-// src/App.js
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import ProductList from './pages/ProductList';
 import Cart from './pages/Cart';
+import Footer from './components/Footer';
+
 import './App.css';
 
 import laptopImage from './components/assets/laptop.jpg';
@@ -64,12 +65,16 @@ const App = () => {
     setPage('products');
   };
 
-
-  
   const renderPage = () => {
-    if (page === 'home')
-      return <Home onShopNowClick={() => setPage('products')} handleCategoryClick={handleCategoryClick} />;
-    if (page === 'products')
+    if (page === 'home') {
+      return (
+        <Home
+          onShopNowClick={() => setPage('products')}
+          handleCategoryClick={handleCategoryClick}
+        />
+      );
+    }
+    if (page === 'products') {
       return (
         <ProductList
           products={products}
@@ -78,7 +83,8 @@ const App = () => {
           selectedCategory={selectedCategory}
         />
       );
-    if (page === 'cart')
+    }
+    if (page === 'cart') {
       return (
         <Cart
           cart={cart}
@@ -86,17 +92,24 @@ const App = () => {
           updateQuantity={updateQuantity}
         />
       );
+    }
   };
 
   return (
     <div className="app">
       <Navbar changePage={setPage} handleSearch={setSearchQuery} />
       {renderPage()}
+      <Footer />
     </div>
   );
 };
 
 export default App;
+
+
+
+
+
 
 
 
