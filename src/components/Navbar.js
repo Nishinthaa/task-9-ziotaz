@@ -1,34 +1,36 @@
-// src/components/Navbar.js
 import React, { useState } from 'react';
 
 const Navbar = ({ changePage, handleSearch }) => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  const toggleDarkMode = () => {
-    document.body.classList.toggle('dark-mode', !darkMode);
-    setDarkMode(!darkMode);
-  };
+  const toggleMenu = () => setMenuOpen(!menuOpen);
 
   return (
     <nav className="navbar">
-      <div>
+      <div className="navbar-brand" onClick={() => changePage('home')}>
+        E-Commerce
+      </div>
+      <div className="navbar-toggle" onClick={toggleMenu}>
+        ☰
+      </div>
+      <div className={`navbar-links ${menuOpen ? 'open' : ''}`}>
         <button onClick={() => changePage('home')}>Home</button>
         <button onClick={() => changePage('products')}>Products</button>
         <button onClick={() => changePage('cart')}>Cart</button>
       </div>
-      <div className="search-bar">
-        <input
-          type="text"
-          placeholder="Search products..."
-          onChange={(e) => handleSearch(e.target.value)}
-        />
-      </div>
-      <button className="dark-mode-toggle" onClick={toggleDarkMode}>
-        {darkMode ? 'Light Mode' : 'Dark Mode'}
-      </button>
+      <input
+        type="text"
+        className="search-bar"
+        placeholder="Search..."
+        onChange={(e) => handleSearch(e.target.value)}
+      />
     </nav>
   );
 };
 
 export default Navbar;
+
+
+
+
 
